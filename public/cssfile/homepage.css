@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-left {
+    margin-left: 20px;
+  }
+  
+  .company-name {
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .navbar-right {
+    margin-right: 40px;
+  }
+  
+  .login, .register {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .image {
+    width: 100%;
+    height: 50%;
+    object-fit:scale-down;
+  }
+  
