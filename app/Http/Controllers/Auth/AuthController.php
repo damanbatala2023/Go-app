@@ -18,18 +18,14 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-    
-        $user = User::where('email', $email)->first();
-    
-        if ($user && Hash::check($password, $user->password)) {
-            Auth::login($user);
-            echo 'congratulation';
-            // return redirect('/dashboard');
+    //    dd($request->all());
+       if(Auth::attempt(['email' => $request->email, 'password' => $request->password],true))
+        {
+            return redirect ('/dashboard');
         }
-    
-        return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+        else{
+         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+        }
     }
     
 

@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
      return view('welcome');
  });
 
-
+ 
 
 
  // routes/web.php
@@ -22,4 +22,5 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
  Route::post('/register', [AuthController::class,'register']);
  Route::post('/logout', [AuthController::class,'logout'])->name('logout');
  
- Route::get('/password/forget', [ForgotPasswordController::class,'showForgetForm'])->name('password.forget');
+Route::get('/forget', [ForgotPasswordController::class,'showForgetForm'])->name('forget');
+Route::post('/forget', [ForgotPasswordController::class,'postForgetForm']);

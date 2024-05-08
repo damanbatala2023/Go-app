@@ -9,7 +9,7 @@
 <body>
 <div class="container">
    
-    <form action="{{route('password.forget')}}" method="POST">
+    <form action="" method="POST">
       @csrf
     <div class="form-group">
         <p>Enter the email address associated with your account and we'll send you a link to reset your password.
@@ -19,7 +19,7 @@
         <input type="email" id="email" name="email" required>
       </div>
       <div class="form-group">
-        <button type="submit">Send Mail</button>
+        <button type="submit">Send reset link</button>
       </div>
     </form>
   </div>

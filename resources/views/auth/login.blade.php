@@ -13,15 +13,15 @@
     <form action="{{route('login')}}" method="POST">
       @csrf
       <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="text" id="username" name="email" required>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
       </div>
       <div class="form-group">
-      <a href="">Forget Password?</a>
+      <a href="{{route('forget')}}">Forget Password?</a>
       </div>
      
       <div class="form-group">
