@@ -8,7 +8,12 @@
 </head>
 <body>
 <div class="container">
-   
+   @if(Session::has('error'))
+   <p style="color:red;">{{Session::get('error')}}</p>
+   @endif
+   @if(Session::has('success'))
+   <p style="color:green;">{{Session::get('success')}}</p>
+   @endif
     <form action="" method="POST">
       @csrf
     <div class="form-group">

@@ -24,3 +24,5 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
  
 Route::get('/forget', [ForgotPasswordController::class,'showForgetForm'])->name('forget');
 Route::post('/forget', [ForgotPasswordController::class,'postForgetForm']);
+
+// Route::get('/forgetPasswordMail', [ForgotPasswordController::class,'showForgetPasswordMailForm'])->name('forgetPasswordMail');
