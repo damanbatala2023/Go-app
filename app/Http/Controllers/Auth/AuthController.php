@@ -29,7 +29,7 @@ class AuthController extends Controller
             return redirect ('/dashboard');
         }
         else{
-         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+         return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
         }
     }
     
@@ -62,7 +62,7 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    public function logout(Request $request)
+    public function logoutbn(Request $request)
     {
         Auth::logout();
 

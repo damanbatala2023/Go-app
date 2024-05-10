@@ -10,15 +10,24 @@
 <div class="container">
    <h2>Reset Password</h2>
    <hr>
-    <form>
+   @if($errors->any())
+    @foreach($errors->all() as $error)
+      <p style="color:red;">{{$error}}</p>
+    @endforeach
+  @endif
+
+    <form action="{{route('reset')}}" method="POST">
+      @csrf
     <div class="form-group">
         <p>Please, enter a new password.</p>
     </div>
       <div class="form-group">
-        <label for="psd">New Password:</label>
-        <input type="password" id="psd" placeholder="Password" required>
-      
-        <input type="password" id="psd" placeholder="Repeat Password" required>
+        
+        <input type="hidden" name="id" value="{{$user[0]['id']}}">
+        <label for="password">New Password:</label>
+        <input type="password" name="password" placeholder="Password" required>
+      <br>
+        <input type="password" name="password_confirmation" placeholder="Repeat Password" required>
       </div>
       <div class="form-group">
         <button type="submit">Change Password</button>

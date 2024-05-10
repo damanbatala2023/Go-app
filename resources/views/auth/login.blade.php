@@ -10,6 +10,14 @@
 <div class="container">
     <h2>Login</h2>
     <hr>
+    @if ($errors->any())
+      @foreach($errors->all() as $error)
+    <div class="alert alert-danger" style="color:red;">
+        {{ $error }}
+    </div>
+    @endforeach
+@endif
+
     <form action="{{route('login')}}" method="POST">
       @csrf
       <div class="form-group">

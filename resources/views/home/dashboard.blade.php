@@ -29,7 +29,7 @@
             <li>Home</li>
             <li>Profile</li>
             <li>Settings</li>
-            <li>Logout</li>
+            <li><a href="/">Logout</a></li>
         </ul>
     </div>
     <div class="main-content">
