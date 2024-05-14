@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-use  App\Models\PasswordReset;
-use Mail;
-use Illuminate\Support\Facades\Str;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Carbon;
 
 class AuthController extends Controller
 {

@@ -6,6 +6,8 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="{{asset('cssfile/homepage.css')}}">
 </head>
+
+    
 <body>
     <nav class="navbar">
         <div class="navbar-left">
@@ -17,7 +19,11 @@
         </div>
     </nav>
 
-    <img src="/img/homepage.jpg" alt="Image" class="image">
+     <!-- <img src="/img/homepage.webp" alt="Image" class="image"> -->
+
+   
+
 
 </body>
+
 </html>

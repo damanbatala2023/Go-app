@@ -22,33 +22,31 @@ class ForgotPasswordController extends Controller
     {
         try {
             $user = User::where('email', $request->email)->first();
-             // Use 'first()' instead of 'get()' to retrieve a single user
-
+    
             if ($user) {
                 $token = Str::random(40);
                 $domain = URL::to('/');
                 $url = $domain . '/reset?token=' . $token;
-
                 $data['url'] = $url;
                 $data['email'] = $request->email;
                 $data['title'] = 'Password Reset';
                 $data['body'] = 'Please click on the link below to reset your password.';
-
                 $dateTime = Carbon::now()->format('Y-m-d H:i:s');
-
+    
+                // Delete any previous password reset tokens for the same email
+                PasswordReset::where('email', $request->email)->delete();
+    
+                // Create a new password reset token
+                PasswordReset::create([
+                    'email' => $request->email,
+                    'token' => $token,
+                    'created_at' => $dateTime,
+                ]);
+    
                 Mail::send('auth.forgetPasswordMail', ['data' => $data], function ($message) use ($data) {
                     $message->to($data['email'])->subject($data['title']);
                 });
-
-                PasswordReset::updateOrCreate(
-                    ['email' => $request->email],
-                    [
-                        'email' => $request->email,
-                        'token' => $token,
-                        'created_at' => $dateTime
-                    ]
-                );
-
+    
                 return back()->with('success', 'Please check your email to reset your password.');
             } else {
                 return back()->with('error', 'Email does not exist!');
