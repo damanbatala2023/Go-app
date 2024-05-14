@@ -38,7 +38,7 @@ class ResetPasswordController extends Controller
         $user->save();
 
         PasswordReset::where('email','$user->email')->delete();
-        return back()->with('success', 'Password has been updated');
+        return redirect('/login');
 
     }
 
