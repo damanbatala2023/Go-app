@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .sidebar {
-            width: 200px;
-            height: 100vh;
-            background-color: #f8f9fa;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .main-content {
-            margin-left: 220px;
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('cssfile/dashboard.css')}}">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Dashboard</h2>
-        <ul>
-            <li>Home</li>
-            <li>Profile</li>
-            <li>Settings</li>
-            <li><a href="/">Logout</a></li>
+    <nav class="navbar">
+        <div class="navbar-brand">Admin Dashboard</div>
+        <div class="navbar-toggle" id="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="navbar-menu">
+          
+            <!-- Add more navbar links if needed -->
+            <li><a href="#">Users record</a></li>
+            <li><a href="#">Logout</a></li>
         </ul>
+    </nav>
+
+    <div class="container">
+       
+        <main class="main-content">
+            <!-- Add your dashboard content here -->
+            <h2>Welcome to the Admin Dashboard</h2>
+        </main>
     </div>
-    <div class="main-content">
-        <h1>Welcome to the Admin Dashboard</h1>
-        <p>This is the main content area.</p>
-    </div>
+
+    <script src="{{asset('jsfile/dashboard.js')}}"></script>
 </body>
 </html>

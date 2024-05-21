@@ -22,7 +22,7 @@ use App\Http\Middleware\UserAuthenticate;
 // })
 
 
- // routes/web.php
+ // Admin routes
 
  Route::get('/admin/login', [AdminLoginController::class,'getAdminLogin'])->name('admin.login');
  Route::post('/admin/login', [AdminLoginController::class,'postAdminLogin']);
@@ -31,6 +31,11 @@ use App\Http\Middleware\UserAuthenticate;
 
  Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware(UserAuthenticate::class);
 
+
+
+
+
+//  User routes
  Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
  Route::post('/login', [AuthController::class,'login']);
 
