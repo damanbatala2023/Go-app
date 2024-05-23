@@ -17,8 +17,8 @@
         <ul class="navbar-menu">
           
             <!-- Add more navbar links if needed -->
-            <li><a href="#">Users record</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="{{route('crud.record')}}">Users record</a></li>
+            <li><a href="{{route('logout')}}">Logout</a></li>
         </ul>
     </nav>
 

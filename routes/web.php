@@ -7,8 +7,10 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\CrudController;
 use App\Http\Middleware\AdminAuthenticate;
 use App\Http\Middleware\UserAuthenticate;
+
 
 
  Route::get('/', function () {
@@ -31,7 +33,11 @@ use App\Http\Middleware\UserAuthenticate;
 
  Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware(UserAuthenticate::class);
 
-
+//  Admin crud system
+Route::get('/crud/record',[CrudController::class,'getRecordForm'])->name('crud.record');
+Route::get('/crud/{id}/edit',[CrudController::class,'getEditForm'])->name('crud.edit');
+Route::post('/crud/{id}/edit',[CrudController::class,'postEditForm']);
+Route::delete('/crud/{id}',[CrudController::class,'getDelete'])->name('crud.delete');
 
 
 

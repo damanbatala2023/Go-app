@@ -21,7 +21,7 @@ class AdminLoginController extends Controller
         ]);
 
         if(Auth::attempt($request->only('email','password'))){
-            if(auth()->user()->is_admin){
+            if(auth()->user()->usertype){
                 return redirect()->route('admin.dashboard');
             }
             Auth::logout();

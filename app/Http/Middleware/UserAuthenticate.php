@@ -15,7 +15,7 @@ class UserAuthenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check() && !auth()->user()->is_admin){
+        if(auth()->check() && !auth()->user()->usertype){
             return $next($request);
             }
     
