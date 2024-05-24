@@ -18,7 +18,11 @@
           
             <!-- Add more navbar links if needed -->
             <li><a href="{{route('crud.record')}}">Users record</a></li>
-            <li><a href="{{route('logout')}}">Logout</a></li>
+            <li><form action="{{ route('admin.logout') }}" method="POST">
+    @csrf
+    <button type="submit" id="logoutBtn" style="background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; cursor: pointer; color: inherit;">Logout</button>
+</form>
+</li>
         </ul>
     </nav>
 

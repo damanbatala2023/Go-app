@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-brand">Admin Dashboard</div>
+        <div class="navbar-brand"><a href="{{route('admin.dashboard')}}" style="background: none; text-decoration:none; color:white">Admin Dashboard</div>
         <div class="navbar-toggle" id="navbar-toggle">
             <span></span>
             <span></span>
@@ -19,7 +19,11 @@
           
             <!-- Add more navbar links if needed -->
             <li><a href="#">Users record</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><form action="{{ route('admin.logout') }}" method="POST">
+    @csrf
+    <button type="submit" id="logoutBtn" style="background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; cursor: pointer; color: inherit;">Logout</button>
+</form>
+</li>
         </ul>
     </nav>
 

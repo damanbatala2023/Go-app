@@ -21,7 +21,7 @@ class AuthController extends Controller
     //    dd($request->all());
        if(Auth::attempt(['email' => $request->email, 'password' => $request->password],true))
         {
-            return redirect ('/dashboard');
+            return redirect()->route('home.dashboard');
         }
         else{
          return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
@@ -57,14 +57,7 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    public function logoutbn(Request $request)
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        return redirect('/');
-    }
+   
    
 
 }

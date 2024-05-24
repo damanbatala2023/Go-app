@@ -28,10 +28,11 @@ use App\Http\Middleware\UserAuthenticate;
 
  Route::get('/admin/login', [AdminLoginController::class,'getAdminLogin'])->name('admin.login');
  Route::post('/admin/login', [AdminLoginController::class,'postAdminLogin']);
+ Route::post('/admin/logout', [AdminLoginController::class,'logout'])->name('admin.logout');
 
+// middleware
  Route::get('/admin/dashboard', [AdminDashboardController::class,'getAdminDashboard'])->name('admin.dashboard')->middleware(AdminAuthenticate::class);
-
- Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware(UserAuthenticate::class);
+ Route::get('/home/dashboard', [DashboardController::class,'index'])->name('home.dashboard')->middleware(UserAuthenticate::class);
 
 //  Admin crud system
 Route::get('/crud/record',[CrudController::class,'getRecordForm'])->name('crud.record');
@@ -48,7 +49,7 @@ Route::delete('/crud/{id}',[CrudController::class,'getDelete'])->name('crud.dele
  Route::get('/register', [AuthController::class,'showRegistrationForm'])->name('register');
  Route::post('/register', [AuthController::class,'register']);
  
- Route::post('/logout', [AuthController::class,'logoutbn'])->name('logout');
+ 
  
 Route::get('/forget', [ForgotPasswordController::class,'showForgetForm'])->name('forget');
 Route::post('/forget', [ForgotPasswordController::class,'postForgetForm']);
