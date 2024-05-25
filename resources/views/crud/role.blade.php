@@ -36,7 +36,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td><a href="{{ route('crud.edit-role', $user->id) }}">{{ $user->usertype }}</a></td>
+                        <td><a href="{{ route('crud.edit-role', $user->id) }}" id="editRoleLink">{{ $user->usertype }}</a></td>
 
                     </tr>
                     @endforeach
