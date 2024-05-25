@@ -1,6 +1,6 @@
 @extends('crud.temp')
 
-@section('title','Users Record')
+@section('title','Roles')
 @section('content')
 
 
@@ -10,7 +10,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h4>Users Record</h4>
+            <h4>Users Role</h4>
             @if(Session::has('Success'))
             <div class="alert alert-success">{{Session::get('Success')}}</div>
             @endif
@@ -27,7 +27,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Actions</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -36,15 +36,8 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->usertype }}</td>
-                        <td>
-                            <a href="{{ route('crud.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <form action="{{ route('crud.delete', $user->id) }}" method="POST" style="display: inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                            </form>
-                        </td>
+                        <td><a href="{{ route('crud.edit-role', $user->id) }}">{{ $user->usertype }}</a></td>
+
                     </tr>
                     @endforeach
                 </tbody>

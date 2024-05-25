@@ -13,49 +13,50 @@ use App\Http\Middleware\UserAuthenticate;
 
 
 
- Route::get('/', function () {
-     return view('welcome');
- });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 // using prefix method to make route clear
 // Route::prefix('admin')->name('admin.')->group(function(){
-    // Here you can write the routes of admin 
+// Here you can write the routes of admin 
 // })
 
 
- // Admin routes
+// Admin routes
 
- Route::get('/admin/login', [AdminLoginController::class,'getAdminLogin'])->name('admin.login');
- Route::post('/admin/login', [AdminLoginController::class,'postAdminLogin']);
- Route::post('/admin/logout', [AdminLoginController::class,'logout'])->name('admin.logout');
+Route::get('/admin/login', [AdminLoginController::class, 'getAdminLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminLoginController::class, 'postAdminLogin']);
+Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
 // middleware
- Route::get('/admin/dashboard', [AdminDashboardController::class,'getAdminDashboard'])->name('admin.dashboard')->middleware(AdminAuthenticate::class);
- Route::get('/home/dashboard', [DashboardController::class,'index'])->name('home.dashboard')->middleware(UserAuthenticate::class);
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'getAdminDashboard'])->name('admin.dashboard')->middleware(AdminAuthenticate::class);
+Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('home.dashboard')->middleware(UserAuthenticate::class);
 
 //  Admin crud system
-Route::get('/crud/record',[CrudController::class,'getRecordForm'])->name('crud.record');
-Route::get('/crud/{id}/edit',[CrudController::class,'getEditForm'])->name('crud.edit');
-Route::post('/crud/{id}/edit',[CrudController::class,'postEditForm']);
-Route::delete('/crud/{id}',[CrudController::class,'getDelete'])->name('crud.delete');
-
+Route::get('/crud/record', [CrudController::class, 'getRecordForm'])->name('crud.record');
+Route::get('/crud/{id}/edit', [CrudController::class, 'getEditForm'])->name('crud.edit');
+Route::post('/crud/{id}/edit', [CrudController::class, 'postEditForm']);
+Route::delete('/crud/{id}', [CrudController::class, 'getDelete'])->name('crud.delete');
+Route::get('/crud/role', [CrudController::class, 'getRoleForm'])->name('crud.role');
+Route::get('/crud/{id}/edit-role', [CrudController::class, 'getEditRole'])->name('crud.edit-role');
+Route::put('/crud/{id}/update-role', [CrudController::class, 'updateRole'])->name('crud.update-role');
 
 
 //  User routes
- Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
- Route::post('/login', [AuthController::class,'login']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
- Route::get('/register', [AuthController::class,'showRegistrationForm'])->name('register');
- Route::post('/register', [AuthController::class,'register']);
- 
- 
- 
-Route::get('/forget', [ForgotPasswordController::class,'showForgetForm'])->name('forget');
-Route::post('/forget', [ForgotPasswordController::class,'postForgetForm']);
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/forgetPasswordMail', [ForgotPasswordController::class,'showForgetPasswordMailForm'])->name('forgetPasswordMail');
 
-Route::get('/reset', [ResetPasswordController::class,'showResetPasswordForm'])->name('reset');
-Route::post('/reset', [ResetPasswordController::class,'postResetForm']);
 
+Route::get('/forget', [ForgotPasswordController::class, 'showForgetForm'])->name('forget');
+Route::post('/forget', [ForgotPasswordController::class, 'postForgetForm']);
+
+Route::get('/forgetPasswordMail', [ForgotPasswordController::class, 'showForgetPasswordMailForm'])->name('forgetPasswordMail');
+
+Route::get('/reset', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset');
+Route::post('/reset', [ResetPasswordController::class, 'postResetForm']);
