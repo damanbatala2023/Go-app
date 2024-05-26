@@ -15,10 +15,11 @@ class UserAuthenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check() && !auth()->user()->usertype){
+        if (auth()->check() && auth()->user()->usertype) {
             return $next($request);
-            }
-    
-            abort(403, 'you do not have permission to access this page.');
+        }
+
+        abort(403, 'you do not have permission to access this page.');
     }
 }
+    

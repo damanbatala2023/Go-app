@@ -18,16 +18,30 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-    //    dd($request->all());
-       if(Auth::attempt(['email' => $request->email, 'password' => $request->password],true))
-        {
-            return redirect()->route('home.dashboard');
-        }
-        else{
-         return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        if (Auth::attempt($credentials, true)) {
+            // User is authenticated
+            $user = Auth::user();
+
+            // Check if the user's usertype is falsy
+            if (auth()->user()->usertype) {
+                // User's usertype is falsy, allow login
+                return redirect()->route('home.dashboard');
+            } else {
+                // User's usertype is truthy, deny access
+                Auth::logout();
+                return redirect()->back()->withErrors(['email' => 'You do not have permission to access this page.']);
+            }
+        } else {
+            // Authentication failed
+            return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
         }
     }
-    
+
 
     public function showRegistrationForm()
     {
@@ -56,13 +70,4 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
-
-   
-   
-
 }
-
-
-   
-        
-    
